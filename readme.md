@@ -15,7 +15,8 @@
     	  // handle what went wrong
       })
 ![methods of calling the deck](https://i.imgur.com/J8a6R8h.png)
-[Json Of Tarot Card Images](https://github.com/equokka/tarot-json/)
+[Json Of Tarot Card Images](https://github.com/equokka/tarot-json/)  
+
 [Card Images and Content Object?](https://www.kaggle.com/lsind18/tarot-json?select=tarot-images.json)
   
 
