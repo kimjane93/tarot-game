@@ -1,47 +1,52 @@
 ## Pseudo Code Breakdown Of Tarot Reading
+#### Screenshots of Postman and Wireframe + Game Flow at Bottom of Read Me
 
-* Stage One: Establish Deck
-  * need randomizer Math.floor(Math.random() * (max - min + 1) + min)
-  * set randomizer with a max of 78, to match a full tarot deck
-  * OR: Found ekelen/tarot-api on github that has random selector for any number of cards, can have it call every time deck is clicked?
-     ```
-     const axios = require('axios');
+* Set Your HTML Boilerplate:
+  * link your js and css files in the head tag
+    * (use defer in the script tag if in the head - don't forget!)
+  * set header in your body to "Get A Virtual Tarot Reading!"
+  * Set An Image of A Tarot Deck to your body in a div (css styling y'all)
+  * Set a header above the deck image indicating to the user to click the deck to select 3 cards for a past, present, future reading
+  * set empty d
+  * set button to reset your deck for a new reading
+  * set button to allow user to ask specfic questions of the deck(one card responses) 
+  * set button for if a user doesn't like or understand their reading
 
-    axios.get('https://rws-cards-api.herokuapp.com/api/v1/cards/random?n=1')
-      .then(function (response) {
-        // handle 1 random card
-      })
-      .catch(function (error) {
-    	  // handle what went wrong
-      })
-![methods of calling the deck](https://i.imgur.com/J8a6R8h.png)
-[Json Of Tarot Card Images](https://github.com/equokka/tarot-json/)  
+* JS: Establish Deck
+  * Set Deck image on browser to an event listener:
+    * event listener triggers a callback function upon being clicked to create a container and set the innerHTML to tarot-api call with card text  
+      * [Tarot Text Api - url call for 1 random card](https://rws-cards-api.herokuapp.com/api/v1/cards/random?n=1) 
+      * ![methods of calling the deck](https://i.imgur.com/J8a6R8h.png)
+       * If that called card text matches the key of an image in our tarot card JSON, add that into the container as well 
+      * [JSON of card images](https://www.kaggle.com/lsind18/tarot-json?select=tarot-images.json)
+    * (Take care of calling the text api first, much more straightforward deal with assigning images once text works, it's making your brain hurt)
+  * Set a variable that is an empty array with three indexes
+    * each time a card is called, turn one of the elements to 1 in that same event listener
+  *  Write a function to check values of that array
+     *  if three cards have been selected, aka there are no null values left in the array, return the function to prevent new cards from being clicked
 
-[Card Images and Content Object?](https://www.kaggle.com/lsind18/tarot-json?select=tarot-images.json)
-  
+* JS: Buttons
+  * add event listener to Reset Button:
+    * a click triggers a function which should initialize the settings, clearing innerHTML of preset divs from called card text and images ( or should I put it in a bootstrap card?), and sets nested input button to hidden if it isn't
+  * add event listener to Ask Specific Questions:
+    * click triggers function that **reveals** an input and button that user can type questions into
+      * add event listener to that button that triggers an api call for 1 random card text and image
+  * add event listener to I DONT GET IT button:
+    * a click triggers and fortune cooke api call that is set as innerHTML of a div or card, along with a 'dose of reality' message
+    * [Fortune Cookie API](http://yerkee.com/api)
 
-  * each number assigned manually or through pre-existing API content to a specific card text and graphic
-* Stage 3: Customize Reading:
-  * create input button with message asking user to enter their name
-  * through and event listener on the button their name is then added as HTML to a header: `${input-value}'s Reading`
-* Stage 2: Focus Intent On The Deck
-  * Add an event listener to the deck that triggers a temporary message saying 'focus your intent on the deck before you select your cards
-* Stage 3: Select Cards
-  * Add click event listener to the deck
-  * a click triggers revealing a card from the deck
-  * The first card result is possibly pushed into an array of 3 slots
-    * the first slot being a past-associated card
-    * the second slot being a present-associated card
-    * the third slot being a future-associated card
-  * If the array has three truth values, return, do not let them continue to select cards
-  * If there are three truth values in the card away, append text: 'May your reading prompt insight!'
-  * The cards selected are tied to a specfic text or API-called text that is appended into a id-determined div
-* Stage 4: New Reading
-  * set button to re-initialize a newwly shuffled deck
-  * empty input and heading for new name/player
-* Stage 5: Pretty It Up
+JS/HTML:
+* set and pick mood music
+* Pretty It Up
   * add audio button/listener for mood music (soft speakeady jazz?)
   * Determine if Need to Learn How To Upload Graphics Into Digital Card Format, or if there is an api with a tarot deck fully stored
   * background styling# tarot-game
-# tarot-game
-# tarot-game
+
+[Wireframe of Tarot Main Page](https://whimsical.com/tarot-LVEyEG58EggpCTPTT9a1Uv)
+![Wireframe](https://i.imgur.com/EP1Br3V.png)
+
+[Tarot Game Flow on Whimsical](https://whimsical.com/tarot-LVEyEG58EggpCTPTT9a1Uv)
+![Game Flow - sans arrows?](https://i.imgur.com/I3XUTXw.png)
+
+![API Screenshot](https://i.imgur.com/aBZP3hh.png)
+![API Screenshot](https://i.imgur.com/LMxsNrw.png)
