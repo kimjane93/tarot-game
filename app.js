@@ -1,7 +1,8 @@
 /*-------------------------------- Constants --------------------------------*/
-let threeCardGrid, oneCardSlot
 let cardCalled = {}
-
+let fortuneCalled = {
+    dose: 'Tarot Cards, like fortune cookies, are meant to prompt introspection, but are not actual direct answers to your specific lot in life, merely randomized information to which we assign significance. Look for meaning in a way that benefits you.'
+}
 
 
 
@@ -15,23 +16,29 @@ let cardCalled = {}
 
 /*------------------------ Cached Element References ------------------------*/
 
-const askTheDeck = document.getElementById('ask-the-deck')
-const unhappyCustomer = document.getElementById('unhappy-customer')
-const reset = document.getElementById('reset-deck')
+
+const pastCardImage = document.getElementById('past-image')
 const pastCardTitle = document.getElementById('past-title')
 const pastCardMeaning = document.getElementById('past-meaning')
+const presentCardImage = document.getElementById('present-image')
 const presentCardTitle = document.getElementById('present-title')
 const presentCardMeaning = document.getElementById('present-meaning')
+const futureCardImage = document.getElementById('future-image')
 const futureCardTitle = document.getElementById('future-title')
 const futureCardMeaning = document.getElementById('future-meaning')
 const mainDeck = document.getElementById('main-deck')
-
+const questionInput = document.getElementById('question')
+const askTheDeck = document.getElementById('ask-the-deck')
+const unhappyCustomer = document.getElementById('unhappy-customer')
+const fortuneCookie = document.getElementById('fortune-cookie')
+const doseOfReality = document.getElementById('dose-of-reality')
+const reset = document.getElementById('reset-deck')
 
 /*----------------------------- Event Listeners -----------------------------*/
 
 mainDeck.addEventListener('click', grabACard)
 // askTheDeck.addEventListener('click', oneCardAnswer)
-// unhappyCustomer.addEventListener('click', releaseTheFortune)
+unhappyCustomer.addEventListener('click', releaseTheFortune)
 reset.addEventListener('click', initDeck)
 /*-------------------------------- Functions --------------------------------*/
 // Some functions you might choose to use:
@@ -41,12 +48,15 @@ reset.addEventListener('click', initDeck)
 // what the board will look like upon loading
 
 function initDeck(){
-    // threeCardGrid = [null, null, null]
-    // oneCardSlot = [null]
+    pastCardTitle.innerText = ''
     pastCardMeaning.innerText = ''
+    presentCardTitle.innerText = ''
     presentCardMeaning.innerText = ''
+    futureCardTitle.innerText = ''
     futureCardMeaning.innerText = ''
-    document.getElementById('question-card').innerText = ''
+    fortuneCookie.innerText = ''
+    doseOfReality.innerText = ''
+    // document.getElementById('question-card').innerText = ''
 }
 
 // On-Click function:
@@ -75,17 +85,21 @@ function grabACard(e){
       })
     }
 
-
-
-// function appendCard(e.target.id) {
-//     for(let i = 0; i < threeCardGrid.length; i++){
-//         let slot = threeCardGrid[i]
-//         if(slot === null && i === e.target.id){
-//             slot = 1
-
-//         }
-//     }
-// }
+function releaseTheFortune(e){
+    fetch('https://api.adviceslip.com/advice')
+    .then(function(response){
+        return response.json()
+    })
+    .then(function(fortuneText){
+        console.log(fortuneText)
+        fortuneCalled['fortune'] = fortuneText['slip']['advice']
+        console.log(fortuneCalled['fortune'])
+        appendFortune()
+    })
+    .catch(function (error) {
+        // handle what went wrong
+    })
+}
 
 function appendCard(){
     if(pastCardMeaning.innerText === '' && pastCardTitle.innerText === ''){
@@ -106,6 +120,12 @@ function appendCard(){
         futureCardTitle.innerText = `${cardCalled.name}`
         console.log(futureCardTitle)
     }
+}
+
+
+function appendFortune() {
+    fortuneCookie.innerText = `${fortuneCalled.fortune}`
+    doseOfReality.innerText= `${fortuneCalled.dose}`
 }
 
 // Check winner function:
