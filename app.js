@@ -1,5 +1,5 @@
 /*-------------------------------- Constants --------------------------------*/
-const threeCardGrid, oneCardSlot
+let threeCardGrid, oneCardSlot
 
 
 
@@ -13,19 +13,20 @@ const threeCardGrid, oneCardSlot
 
 
 /*------------------------ Cached Element References ------------------------*/
-const mainDeck = document.getElementById('main-deck')
+
 const askTheDeck = document.getElementById('ask-the-deck')
 const unhappyCustomer = document.getElementById('unhappy-customer')
 const reset = document.getElementById('reset-deck')
 const pastCard = document.getElementById('past')
 const presentCard = document.getElementById('present')
 const futureCard = document.getElementById('future')
+const mainDeck = document.getElementById('main-deck')
 
 /*----------------------------- Event Listeners -----------------------------*/
 
 mainDeck.addEventListener('click', grabACard)
-askTheDeck.addEventListener('click', oneCardAnswer)
-unhappyCustomer.addEventListener('click', releaseTheFortune)
+// askTheDeck.addEventListener('click', oneCardAnswer)
+// unhappyCustomer.addEventListener('click', releaseTheFortune)
 reset.addEventListener('click', initDeck)
 /*-------------------------------- Functions --------------------------------*/
 // Some functions you might choose to use:
@@ -39,7 +40,7 @@ function initDeck(){
     oneCardSlot = [null]
     document.getElementById('past').innerHTML = null
     document.getElementById('present').innerHTML = null
-    document.getElementById('')
+    document.getElementById('future').innerHTML = null
     document.getElementById('question').innerText = null
 }
 
@@ -48,7 +49,36 @@ function initDeck(){
 // is clicked
 
 function grabACard(){
-    if
+    fetch('https://rws-cards-api.herokuapp.com/api/v1/cards/random?n=1')
+    .then(function (response) {
+        return response.json()
+        // handle 1 random cards
+      })
+    .then(function(cardContent){
+        console.log(cardContent)
+        let cardCalled = {}
+        cardCalled['name'] = cardContent['cards'][0]['name']
+        console.log(cardCalled['name'])
+        cardCalled['meaning'] = cardContent['cards'][0]['meaning_up']
+        console.log(cardCalled['meaning'])
+        cardCalled['value'] = cardContent['cards'][0]['value']
+        console.log(cardCalled['value'])
+        cardCalled['shortName'] = cardContent['cards'][0]['name_short']
+        console.log(cardCalled['shortName'])
+        // values don't match card image folders, but their names do
+        // match by name value
+        appendCard()
+
+    })
+      .catch(function (error) {
+          // handle what went wrong
+      })
+    }
+
+
+
+function appendCard() {
+    
 }
 
 // Check winner function:
