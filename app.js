@@ -1,5 +1,6 @@
 /*-------------------------------- Constants --------------------------------*/
 let threeCardGrid, oneCardSlot
+let cardCalled = {}
 
 
 
@@ -17,10 +18,14 @@ let threeCardGrid, oneCardSlot
 const askTheDeck = document.getElementById('ask-the-deck')
 const unhappyCustomer = document.getElementById('unhappy-customer')
 const reset = document.getElementById('reset-deck')
-const pastCard = document.getElementById('past')
-const presentCard = document.getElementById('present')
-const futureCard = document.getElementById('future')
+const pastCardTitle = document.getElementById('past-title')
+const pastCardMeaning = document.getElementById('past-meaning')
+const presentCardTitle = document.getElementById('present-title')
+const presentCardMeaning = document.getElementById('present-meaning')
+const futureCardTitle = document.getElementById('future-title')
+const futureCardMeaning = document.getElementById('future-meaning')
 const mainDeck = document.getElementById('main-deck')
+
 
 /*----------------------------- Event Listeners -----------------------------*/
 
@@ -36,19 +41,19 @@ reset.addEventListener('click', initDeck)
 // what the board will look like upon loading
 
 function initDeck(){
-    threeCardGrid = [null, null, null]
-    oneCardSlot = [null]
-    document.getElementById('past').innerHTML = null
-    document.getElementById('present').innerHTML = null
-    document.getElementById('future').innerHTML = null
-    document.getElementById('question').innerText = null
+    // threeCardGrid = [null, null, null]
+    // oneCardSlot = [null]
+    pastCardMeaning.innerText = ''
+    presentCardMeaning.innerText = ''
+    futureCardMeaning.innerText = ''
+    document.getElementById('question-card').innerText = ''
 }
 
 // On-Click function:
 // Set up what happens when one of the elements
 // is clicked
 
-function grabACard(){
+function grabACard(e){
     fetch('https://rws-cards-api.herokuapp.com/api/v1/cards/random?n=1')
     .then(function (response) {
         return response.json()
@@ -56,15 +61,10 @@ function grabACard(){
       })
     .then(function(cardContent){
         console.log(cardContent)
-        let cardCalled = {}
         cardCalled['name'] = cardContent['cards'][0]['name']
         console.log(cardCalled['name'])
         cardCalled['meaning'] = cardContent['cards'][0]['meaning_up']
         console.log(cardCalled['meaning'])
-        cardCalled['value'] = cardContent['cards'][0]['value']
-        console.log(cardCalled['value'])
-        cardCalled['shortName'] = cardContent['cards'][0]['name_short']
-        console.log(cardCalled['shortName'])
         // values don't match card image folders, but their names do
         // match by name value
         appendCard()
@@ -77,8 +77,35 @@ function grabACard(){
 
 
 
-function appendCard() {
-    
+// function appendCard(e.target.id) {
+//     for(let i = 0; i < threeCardGrid.length; i++){
+//         let slot = threeCardGrid[i]
+//         if(slot === null && i === e.target.id){
+//             slot = 1
+
+//         }
+//     }
+// }
+
+function appendCard(){
+    if(pastCardMeaning.innerText === '' && pastCardTitle.innerText === ''){
+        pastCardMeaning.innerText = `${cardCalled.meaning}`
+        console.log(pastCardMeaning)
+        pastCardTitle.innerText = `${cardCalled.name}`
+        console.log(pastCardTitle)
+    }
+    else if(presentCardMeaning.innerText === '' && presentCardTitle.innerText === ''){
+        presentCardMeaning.innerText = `${cardCalled.meaning}`
+        console.log(presentCardMeaning)
+        presentCardTitle.innerText = `${cardCalled.name}`
+        console.log(presentCardTitle)
+    }
+    else if(futureCardMeaning.innerText === '' && futureCardTitle.innerText === ''){
+        futureCardMeaning.innerText = `${cardCalled.meaning}`
+        console.log(futureCardMeaning)
+        futureCardTitle.innerText = `${cardCalled.name}`
+        console.log(futureCardTitle)
+    }
 }
 
 // Check winner function:
