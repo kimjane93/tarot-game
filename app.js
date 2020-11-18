@@ -27,17 +27,19 @@ const futureCardImage = document.getElementById('future-image')
 const futureCardTitle = document.getElementById('future-title')
 const futureCardMeaning = document.getElementById('future-meaning')
 const mainDeck = document.getElementById('main-deck')
-const questionInput = document.getElementById('question')
-const askTheDeck = document.getElementById('ask-the-deck')
 const unhappyCustomer = document.getElementById('unhappy-customer')
 const fortuneCookie = document.getElementById('fortune-cookie')
 const doseOfReality = document.getElementById('dose-of-reality')
 const reset = document.getElementById('reset-deck')
+const questionInput = document.getElementById('question')
+const askTheDeck = document.getElementById('ask-the-deck')
+const questionCardTitle = document.getElementById('card-title')
+const questionCardMeaning = document.getElementById('card-meaning')
 
 /*----------------------------- Event Listeners -----------------------------*/
 
 mainDeck.addEventListener('click', grabACard)
-// askTheDeck.addEventListener('click', oneCardAnswer)
+askTheDeck.addEventListener('click', oneCardAnswer)
 unhappyCustomer.addEventListener('click', releaseTheFortune)
 reset.addEventListener('click', initDeck)
 /*-------------------------------- Functions --------------------------------*/
@@ -56,7 +58,9 @@ function initDeck(){
     futureCardMeaning.innerText = ''
     fortuneCookie.innerText = ''
     doseOfReality.innerText = ''
-    // document.getElementById('question-card').innerText = ''
+    questionCardTitle.innerText = ''
+    questionCardMeaning.innerText = ''
+    questionInput.value = ''
 }
 
 // On-Click function:
@@ -85,6 +89,29 @@ function grabACard(e){
       })
     }
 
+function oneCardAnswer(e) {
+    initDeck()
+    fetch('https://rws-cards-api.herokuapp.com/api/v1/cards/random?n=1')
+    .then(function (response) {
+        return response.json()
+        // handle 1 random cards
+      })
+    .then(function(cardContent){
+        console.log(cardContent)
+        cardCalled['name'] = cardContent['cards'][0]['name']
+        console.log(cardCalled['name'])
+        cardCalled['meaning'] = cardContent['cards'][0]['meaning_up']
+        console.log(cardCalled['meaning'])
+        // values don't match card image folders, but their names do
+        // match by name value
+        appendAnswer()
+
+    })
+      .catch(function (error) {
+          // handle what went wrong
+      })
+    }
+
 function releaseTheFortune(e){
     fetch('https://api.adviceslip.com/advice')
     .then(function(response){
@@ -101,7 +128,7 @@ function releaseTheFortune(e){
     })
 }
 
-function appendCard(){
+function appendCard(e){
     if(pastCardMeaning.innerText === '' && pastCardTitle.innerText === ''){
         pastCardMeaning.innerText = `${cardCalled.meaning}`
         console.log(pastCardMeaning)
@@ -122,10 +149,16 @@ function appendCard(){
     }
 }
 
+function appendAnswer() {
+    questionCardTitle.innerText = `${cardCalled.name}`
+    questionCardMeaning.innerText = `${cardCalled.meaning}`
+}
+
 
 function appendFortune() {
-    fortuneCookie.innerText = `${fortuneCalled.fortune}`
-    doseOfReality.innerText= `${fortuneCalled.dose}`
+    fortuneCookie.innerText = `Have A Fortune Cookie:  
+    ${fortuneCalled.fortune}`
+    doseOfReality.innerText = `${fortuneCalled.dose}`
 }
 
 // Check winner function:
