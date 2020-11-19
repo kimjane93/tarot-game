@@ -347,6 +347,7 @@ const doseOfReality = document.getElementById('dose-of-reality')
 const reset = document.getElementById('reset-deck')
 const questionInput = document.getElementById('question')
 const askTheDeck = document.getElementById('ask-the-deck')
+const questionCardImage = document.getElementById('answer-image')
 const questionCardTitle = document.getElementById('card-title')
 const questionCardMeaning = document.getElementById('card-meaning')
 
@@ -364,17 +365,21 @@ reset.addEventListener('click', initDeck)
 // what the board will look like upon loading
 
 function initDeck(){
+    pastCardImage.innerHTML = ''
     pastCardTitle.innerText = ''
     pastCardMeaning.innerText = ''
+    presentCardImage.innerHTML = ''
     presentCardTitle.innerText = ''
     presentCardMeaning.innerText = ''
+    futureCardImage.innerHTML = ''
     futureCardTitle.innerText = ''
     futureCardMeaning.innerText = ''
-    fortuneCookie.innerText = ''
-    doseOfReality.innerText = ''
+    questionCardImage.innerHTML = ''
     questionCardTitle.innerText = ''
     questionCardMeaning.innerText = ''
     questionInput.value = ''
+    fortuneCookie.innerText = ''
+    doseOfReality.innerText = ''
 }
 
 // On-Click function:
@@ -385,21 +390,14 @@ function grabACard(e){
     fetch('https://rws-cards-api.herokuapp.com/api/v1/cards/random?n=1')
     .then(function (response) {
         return response.json()
-        // handle 1 random cards
       })
     .then(function(cardContent){
-        console.log(cardContent)
         cardCalled['name'] = cardContent['cards'][0]['name']
-        console.log(cardCalled['name'])
         cardCalled['meaning'] = cardContent['cards'][0]['meaning_up']
-        console.log(cardCalled['meaning'])
-        // values don't match card image folders, but their names do
-        // match by name value
         appendCard()
 
     })
       .catch(function (error) {
-          // handle what went wrong
       })
     }
 
@@ -408,21 +406,14 @@ function oneCardAnswer(e) {
     fetch('https://rws-cards-api.herokuapp.com/api/v1/cards/random?n=1')
     .then(function (response) {
         return response.json()
-        // handle 1 random cards
       })
     .then(function(cardContent){
-        console.log(cardContent)
         cardCalled['name'] = cardContent['cards'][0]['name']
-        console.log(cardCalled['name'])
         cardCalled['meaning'] = cardContent['cards'][0]['meaning_up']
-        console.log(cardCalled['meaning'])
-        // values don't match card image folders, but their names do
-        // match by name value
         appendAnswer()
 
     })
       .catch(function (error) {
-          // handle what went wrong
       })
     }
 
@@ -432,40 +423,73 @@ function releaseTheFortune(e){
         return response.json()
     })
     .then(function(fortuneText){
-        console.log(fortuneText)
         fortuneCalled['fortune'] = fortuneText['slip']['advice']
-        console.log(fortuneCalled['fortune'])
         appendFortune()
     })
     .catch(function (error) {
-        // handle what went wrong
     })
 }
 
 function appendCard(e){
     if(pastCardMeaning.innerText === '' && pastCardTitle.innerText === ''){
         pastCardMeaning.innerText = `${cardCalled.meaning}`
-        console.log(pastCardMeaning)
         pastCardTitle.innerText = `${cardCalled.name}`
-        console.log(pastCardTitle)
+        let iterator = cards.values()
+        for(let value of iterator){
+            if(value.name === cardCalled.name){
+                let image = value.img
+                let pastImage = document.createElement('img')
+                pastImage.setAttribute('src', `/tarot-json/cards/${image}`)
+                pastImage.setAttribute('height', '300px')
+                pastCardImage.appendChild(pastImage)
+            }
+        }
     }
     else if(presentCardMeaning.innerText === '' && presentCardTitle.innerText === ''){
         presentCardMeaning.innerText = `${cardCalled.meaning}`
-        console.log(presentCardMeaning)
         presentCardTitle.innerText = `${cardCalled.name}`
-        console.log(presentCardTitle)
+        let iterator = cards.values()
+        for(let value of iterator){
+            if(value.name === cardCalled.name){
+                let image = value.img
+                let presentImage = document.createElement('img')
+                presentImage.setAttribute('src', `/tarot-json/cards/${image}`)
+                presentImage.setAttribute('height', '300px')
+                presentCardImage.appendChild(presentImage)
+            }
+        }
     }
     else if(futureCardMeaning.innerText === '' && futureCardTitle.innerText === ''){
         futureCardMeaning.innerText = `${cardCalled.meaning}`
-        console.log(futureCardMeaning)
         futureCardTitle.innerText = `${cardCalled.name}`
-        console.log(futureCardTitle)
+        let iterator = cards.values()
+        for(let value of iterator){
+            if(value.name === cardCalled.name){
+                let image = value.img
+                let futureImage = document.createElement('img')
+                futureImage.setAttribute('src', `/tarot-json/cards/${image}`)
+                futureImage.setAttribute('height', '300px')
+                futureCardImage.appendChild(futureImage)
+            }
+        }
     }
 }
 
 function appendAnswer() {
+    if(questionCardImage.innerHTML === ''){
+        let iterator = cards.values()
+        for(let value of iterator){
+            if(value.name === cardCalled.name){
+                let image = value.img
+                let answerImage = document.createElement('img')
+                answerImage.setAttribute('src', `/tarot-json/cards/${image}`)
+                answerImage.setAttribute('height', '300px')
+                questionCardImage.appendChild(answerImage)
+            }
+        }
     questionCardTitle.innerText = `${cardCalled.name}`
     questionCardMeaning.innerText = `${cardCalled.meaning}`
+    }
 }
 
 
@@ -473,14 +497,6 @@ function appendFortune() {
     fortuneCookie.innerText = `Have A Fortune Cookie:  
     ${fortuneCalled.fortune}`
     doseOfReality.innerText = `${fortuneCalled.dose}`
-    let iterator = cards.values()
-    for(let value of iterator){
-        if(value.name === cardCalled.name){
-            let futureImage = document.createElement('img')
-            futureImage.setAttribute('src', "/tarot-json/cards/`${value.img}`")
-            futureCardImage.appendChild(futureImage)
-        }
-    }
 }
 
 
