@@ -24,18 +24,20 @@ html {
     margin: 0;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
     justify-content: center;
     align-items: center;
-    background-image: radial-gradient(rgb(59, 59, 183),  rgb(133, 133, 201), rgb(63, 14, 69));
+    background-image: url('https://ae01.alicdn.com/kf/HTB18MveeZbI8KJjy1zdq6ze1VXam/Dark-fairy-lights-neon-Natural-Vintage-real-Wood-backdrop-Vinyl-cloth-High-quality-Computer-print-christmas.jpg');
     background-size: cover;
-    height: 100vh;
-    font-family: 'Nanum Brush Script', cursive;
+    /* height: 100vh; */
+    font-family: 'Big Shoulders Stencil Display', cursive;
    }
 
 #main-deck{
     border-radius: 3%;
     height: 30%;
+}
+#main-deck:hover{
+    transform: scale(1.2)
 }
 
 #ppp-grid{
@@ -51,9 +53,24 @@ html {
     justify-content: center;
     border: none;
     font-size: 20px;
+    border-radius: 5%;
 }
-#button-grid>*{
-    border: inset;
+button{
+    border: rgba(210, 180, 140, 0.442) inset;
+    background-color: rgba(0, 0, 0, 0.442);
+    color: white;
+    font-family: 'Big Shoulders Stencil Display', cursive;
+    font-size: 2rem;
+}
+button:hover{
+    background-color: rgba(0, 0, 0, .9);
+    color: white;
+    transform: scale(1.2)
+}
+input{
+    border: rgba(210, 180, 140, 0.442) inset;
+    font-size: 2rem;
+    font-family: 'Big Shoulders Stencil Display', cursive;
 }
 #question-card{
     border: none;
@@ -66,15 +83,52 @@ html {
 #ppp-grid img{
     height: 200px;
 }
-
 #question-card img{
     height: 200px;
 }
 #advice{
-    font-size: 30px;
+    font-size: 3rem;
     text-align: center;
+    background-color: rgba(0, 0, 0, 0.442);
+    color: white;
+    border-radius: 20%;
 }
-p{
-    display: block;
+#advice:hover{
+    background-color: rgba(0, 0, 0, .9);
+    color: white
 }
-
+.background-color{
+    background-color: rgba(0, 0, 0, 0.442);
+    color: white;
+    border-radius: 20%;
+}
+.background-color:hover{
+    background-color: rgba(0, 0, 0, .9);
+    color: white;
+    transform: scale(1.2)
+}
+h1{
+    background-color: rgba(0, 0, 0, 0.442);
+    color: white;
+    border-radius: 20%;
+    font-size: 3rem;
+}
+h2{
+    background-color: rgba(0, 0, 0, 0.442);
+    color: white;
+    border-radius: 20%;
+    font-size: 2.5rem;
+}
+h1:hover{
+    background-color: rgba(0, 0, 0, .9);
+    color: white;
+    transform: scale(1.2)
+}
+h2:hover{
+    background-color: rgba(0, 0, 0, .9);
+    color: white;
+    transform: scale(1.2)
+}
+.card-title{
+    font-size: 2rem;
+}

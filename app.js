@@ -318,55 +318,64 @@ let cards = [
     }
   ]
 
-
-
-
-/*---------------------------- Variables (state) ----------------------------*/
-
-
-
-
-
-
 /*------------------------ Cached Element References ------------------------*/
 
 const pastCard = document.getElementById('past')
 const pastCardImage = document.getElementById('past-image')
 const pastCardTitle = document.getElementById('past-title')
 const pastCardMeaning = document.getElementById('past-meaning')
+
 const presentCard = document.getElementById('present')
 const presentCardImage = document.getElementById('present-image')
 const presentCardTitle = document.getElementById('present-title')
 const presentCardMeaning = document.getElementById('present-meaning')
+
 const futureCard = document.getElementById('future')
 const futureCardImage = document.getElementById('future-image')
 const futureCardTitle = document.getElementById('future-title')
 const futureCardMeaning = document.getElementById('future-meaning')
-const mainDeck = document.getElementById('main-deck')
-const unhappyCustomer = document.getElementById('unhappy-customer')
-const fortuneCookie = document.getElementById('fortune-cookie')
-const doseOfReality = document.getElementById('dose-of-reality')
-const reset = document.getElementById('reset-deck')
+
 const questionInput = document.getElementById('question')
-const askTheDeck = document.getElementById('ask-the-deck')
 const questionCard = document.getElementById('question-card')
 const questionCardImage = document.getElementById('answer-image')
 const questionCardTitle = document.getElementById('card-title')
 const questionCardMeaning = document.getElementById('card-meaning')
-const pppGrid = document.getElementById('ppp-grid')
+
+const fortuneCookie = document.getElementById('fortune-cookie')
+const doseOfReality = document.getElementById('dose-of-reality')
+
+const body = document.querySelector('body')
+
+const mainDeck = document.getElementById('main-deck')
+mainDeck.addEventListener('mouseover', function (e) {
+  audio.play()
+})
+
+const audio = new Audio('/OKECO47483.mp3')
+
 
 /*----------------------------- Event Listeners -----------------------------*/
 
-mainDeck.addEventListener('click', grabACard)
-askTheDeck.addEventListener('click', oneCardAnswer)
-unhappyCustomer.addEventListener('click', releaseTheFortune)
-reset.addEventListener('click', initDeck)
-/*-------------------------------- Functions --------------------------------*/
-// Some functions you might choose to use:
+body.addEventListener('click', masterFunction)
 
-// Initialization function:
-// Where you set your initial state, setting up 
-// what the board will look like upon loading
+
+
+/*-------------------------------- Functions --------------------------------*/
+function masterFunction(e){
+  let identifier = e.target.id
+  if(identifier === 'reset-deck'){
+    initDeck()
+  }
+  else if(identifier === 'unhappy-customer'){
+    releaseTheFortune()
+  }
+  else if(identifier === 'main-deck'){
+    grabACard()
+  }
+  else if(identifier === 'ask-the-deck'){
+    oneCardAnswer()
+  }
+}
 
 function initDeck(){
     pastCardImage.innerHTML = ''
@@ -390,11 +399,7 @@ function initDeck(){
     questionCard.style.visibility = 'hidden'
 }
 
-// On-Click function:
-// Set up what happens when one of the elements
-// is clicked
-
-function grabACard(e){
+function grabACard(){
     fetch('https://rws-cards-api.herokuapp.com/api/v1/cards/random?n=1')
     .then(function (response) {
         return response.json()
@@ -409,7 +414,7 @@ function grabACard(e){
       })
     }
 
-function oneCardAnswer(e) {
+function oneCardAnswer() {
     initDeck()
     fetch('https://rws-cards-api.herokuapp.com/api/v1/cards/random?n=1')
     .then(function (response) {
@@ -425,7 +430,7 @@ function oneCardAnswer(e) {
       })
     }
 
-function releaseTheFortune(e){
+function releaseTheFortune(){
     fetch('https://api.adviceslip.com/advice')
     .then(function(response){
         return response.json()
@@ -438,7 +443,7 @@ function releaseTheFortune(e){
     })
 }
 
-function appendCard(e){
+function appendCard(){
     if(pastCardMeaning.innerText === '' && pastCardTitle.innerText === ''){
         pastCardMeaning.innerText = `${cardCalled.meaning}`
         pastCardTitle.innerText = `${cardCalled.name}`
@@ -448,7 +453,6 @@ function appendCard(e){
                 let image = value.img
                 let pastImage = document.createElement('img')
                 pastImage.setAttribute('src', `/tarot-json/cards/${image}`)
-                pastImage.setAttribute('height', '300px')
                 pastCardImage.appendChild(pastImage)
             }
         }
@@ -463,7 +467,6 @@ function appendCard(e){
                 let image = value.img
                 let presentImage = document.createElement('img')
                 presentImage.setAttribute('src', `/tarot-json/cards/${image}`)
-                presentImage.setAttribute('height', '300px')
                 presentCardImage.appendChild(presentImage)
             }
         }
@@ -478,7 +481,6 @@ function appendCard(e){
                 let image = value.img
                 let futureImage = document.createElement('img')
                 futureImage.setAttribute('src', `/tarot-json/cards/${image}`)
-                futureImage.setAttribute('height', '300px')
                 futureCardImage.appendChild(futureImage)
             }
         }
@@ -503,7 +505,6 @@ function appendAnswer() {
     questionCard.style.visibility = 'visible'
     }
 }
-
 
 function appendFortune() {
     fortuneCookie.innerText = `Have A Fortune Cookie:  
