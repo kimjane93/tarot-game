@@ -25,17 +25,17 @@ html {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    /* justify-content: center;
-    align-items: center; */
-    /* height: 100vh; */
-   }
-
-   body>*{
-       margin: 25px;
+    justify-content: center;
+    align-items: center;
+    background-image: radial-gradient(rgb(59, 59, 183),  rgb(133, 133, 201), rgb(63, 14, 69));
+    background-size: cover;
+    height: 100vh;
+    font-family: 'Nanum Brush Script', cursive;
    }
 
 #main-deck{
     border-radius: 3%;
+    height: 30%;
 }
 
 #ppp-grid{
@@ -46,26 +46,35 @@ html {
     visibility: hidden;
 }
 .card{
-    border: inset;
-    border-color: rgba(225, 194, 14, 0.75);
     display: flex;
     align-items: center;
     justify-content: center;
+    border: none;
+    font-size: 20px;
 }
-#button-grid{
-    display: flex;
-    flex-direction: column;
+#button-grid>*{
+    border: inset;
 }
 #question-card{
-    border: inset;
-    border-color: rgba(225, 194, 14, 0.75);
+    border: none;
     visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+#ppp-grid img{
+    height: 200px;
 }
 
-/* img{
-    padding: 20px;
-}  */
-/* 
+#question-card img{
+    height: 200px;
+}
+#advice{
+    font-size: 30px;
+    text-align: center;
+}
 p{
-    padding: 20px;
-}  */
+    display: block;
+}
+

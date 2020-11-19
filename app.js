@@ -384,7 +384,9 @@ function initDeck(){
     questionInput.value = ''
     fortuneCookie.innerText = ''
     doseOfReality.innerText = ''
-    pppGrid.style.visibility = 'hidden'
+    presentCard.style.visibility = 'hidden'
+    pastCard.style.visibility = 'hidden'
+    futureCard.style.visibility = 'hidden'
     questionCard.style.visibility = 'hidden'
 }
 
@@ -508,16 +510,5 @@ function appendFortune() {
     ${fortuneCalled.fortune}`
     doseOfReality.innerText = `${fortuneCalled.dose}`
 }
-
-
-// Check winner function:
-// Checks the current state of the board for
-// a winner and changes the state of the winner
-// variable if so
-
-// Render function:
-// Displays the current state of the board
-// on the page, updating the elements to reflect
-// either X or O depending on whose turn it is
 
 
