@@ -14,25 +14,25 @@
   <img src="https://visualtarot.com/decks/universal-tarot-grand-trumps/back-images/universal-tarot-grand-trumps-back-image-of-cards-01.jpg" id='main-deck' alt="design of the back of Rider-Waite Tarot cards">
   <h2>Click the deck to receive three cards pertaining to your past, present and future</h2>
   <div id="ppp-grid">
-      <h3>Past</h3>
-      <h3>Present</h3>
-      <h3>Future</h3>
-    <div class="card" style="width: 18rem;">
+    <div class="card" id='past' style="width: 18rem;">
         <div class="card-body">
+          <h3>Past</h3>
           <div id='past-image'></div>
           <h5 id='past-title' class="card-title"></h5>
           <p class="card-text" id='past-meaning'></p>
         </div>
       </div>
-      <div class="card" style="width: 18rem;">
+      <div class="card" id='present' style="width: 18rem;">
         <div class="card-body">
+          <h3>Present</h3>
           <div id='present-image'></div>
           <h5 id='present-title' class="card-title"></h5>
           <p class="card-text" id='present-meaning'></p>
         </div>
       </div>
-      <div class="card" style="width: 18rem;">
+      <div class="card" id='future' style="width: 18rem;">
         <div class="card-body">
+          <h3>Future</h3>
           <div id='future-image'></div>
           <h5 id='future-title' class="card-title"></h5>
           <p class="card-text" id='future-meaning'></p>
@@ -41,7 +41,7 @@
   </div>
 <div id="button-grid">
     <button type="button" id='reset-deck' class="btn btn-outline-dark">Reset Deck</button>
-    <div class="card" style="width: 18rem;">
+    <div class="card" id='question-card' style="width: 18rem;">
       <div class="card-body">
         <div id='answer-image'></div>
         <h5 id='card-title' class="card-title"></h5>

@@ -330,13 +330,15 @@ let cards = [
 
 /*------------------------ Cached Element References ------------------------*/
 
-
+const pastCard = document.getElementById('past')
 const pastCardImage = document.getElementById('past-image')
 const pastCardTitle = document.getElementById('past-title')
 const pastCardMeaning = document.getElementById('past-meaning')
+const presentCard = document.getElementById('present')
 const presentCardImage = document.getElementById('present-image')
 const presentCardTitle = document.getElementById('present-title')
 const presentCardMeaning = document.getElementById('present-meaning')
+const futureCard = document.getElementById('future')
 const futureCardImage = document.getElementById('future-image')
 const futureCardTitle = document.getElementById('future-title')
 const futureCardMeaning = document.getElementById('future-meaning')
@@ -347,9 +349,11 @@ const doseOfReality = document.getElementById('dose-of-reality')
 const reset = document.getElementById('reset-deck')
 const questionInput = document.getElementById('question')
 const askTheDeck = document.getElementById('ask-the-deck')
+const questionCard = document.getElementById('question-card')
 const questionCardImage = document.getElementById('answer-image')
 const questionCardTitle = document.getElementById('card-title')
 const questionCardMeaning = document.getElementById('card-meaning')
+const pppGrid = document.getElementById('ppp-grid')
 
 /*----------------------------- Event Listeners -----------------------------*/
 
@@ -380,6 +384,8 @@ function initDeck(){
     questionInput.value = ''
     fortuneCookie.innerText = ''
     doseOfReality.innerText = ''
+    pppGrid.style.visibility = 'hidden'
+    questionCard.style.visibility = 'hidden'
 }
 
 // On-Click function:
@@ -444,6 +450,7 @@ function appendCard(e){
                 pastCardImage.appendChild(pastImage)
             }
         }
+        pastCard.style.visibility = 'visible'
     }
     else if(presentCardMeaning.innerText === '' && presentCardTitle.innerText === ''){
         presentCardMeaning.innerText = `${cardCalled.meaning}`
@@ -458,6 +465,7 @@ function appendCard(e){
                 presentCardImage.appendChild(presentImage)
             }
         }
+        presentCard.style.visibility = 'visible'
     }
     else if(futureCardMeaning.innerText === '' && futureCardTitle.innerText === ''){
         futureCardMeaning.innerText = `${cardCalled.meaning}`
@@ -472,6 +480,7 @@ function appendCard(e){
                 futureCardImage.appendChild(futureImage)
             }
         }
+        futureCard.style.visibility = 'visible'
     }
 }
 
@@ -489,6 +498,7 @@ function appendAnswer() {
         }
     questionCardTitle.innerText = `${cardCalled.name}`
     questionCardMeaning.innerText = `${cardCalled.meaning}`
+    questionCard.style.visibility = 'visible'
     }
 }
 
