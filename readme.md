@@ -1,5 +1,6 @@
 ## Pseudo Code Breakdown Of Tarot Reading
 #### Screenshots of Postman and Wireframe + Game Flow at Bottom of Read Me
+[Deployed Tarot Game](http://tarot-game.surge.sh/)
 
 * Set Your HTML Boilerplate:
   * link your js and css files in the head tag

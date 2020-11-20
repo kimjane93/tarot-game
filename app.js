@@ -343,6 +343,7 @@ const questionCardMeaning = document.getElementById('card-meaning')
 
 const fortuneCookie = document.getElementById('fortune-cookie')
 const doseOfReality = document.getElementById('dose-of-reality')
+const advice = document.getElementById('advice')
 
 const body = document.querySelector('body')
 
@@ -397,6 +398,7 @@ function initDeck(){
     pastCard.style.visibility = 'hidden'
     futureCard.style.visibility = 'hidden'
     questionCard.style.visibility = 'hidden'
+    advice.style.visibility = 'hidden'
 }
 
 function grabACard(){
@@ -514,4 +516,5 @@ function appendFortune() {
     fortuneCookie.innerText = `Have A Fortune Cookie:  
     ${fortuneCalled.fortune}`
     doseOfReality.innerText = `${fortuneCalled.dose}`
+    advice.style.visibility = 'visible'
 }
