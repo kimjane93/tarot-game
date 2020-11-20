@@ -346,12 +346,12 @@ const doseOfReality = document.getElementById('dose-of-reality')
 
 const body = document.querySelector('body')
 
-const mainDeck = document.getElementById('main-deck')
-mainDeck.addEventListener('mouseover', function (e) {
-  audio.play()
-})
+// const mainDeck = document.getElementById('main-deck')
+// mainDeck.addEventListener('mouseover', function (e) {
+//   audio.play()
+// })
 
-const audio = new Audio('/OKECO47483.mp3')
+// const audio = new Audio('/OKECO47483.mp3')
 
 
 /*----------------------------- Event Listeners -----------------------------*/
@@ -437,6 +437,7 @@ function releaseTheFortune(){
     })
     .then(function(fortuneText){
         fortuneCalled['fortune'] = fortuneText['slip']['advice']
+        initDeck()
         appendFortune()
     })
     .catch(function (error) {
@@ -453,6 +454,7 @@ function appendCard(){
                 let image = value.img
                 let pastImage = document.createElement('img')
                 pastImage.setAttribute('src', `/tarot-json/cards/${image}`)
+                pastImage.setAttribute('height', '300px')
                 pastCardImage.appendChild(pastImage)
             }
         }
@@ -467,6 +469,7 @@ function appendCard(){
                 let image = value.img
                 let presentImage = document.createElement('img')
                 presentImage.setAttribute('src', `/tarot-json/cards/${image}`)
+                presentImage.setAttribute('height', '300px')
                 presentCardImage.appendChild(presentImage)
             }
         }
@@ -481,6 +484,7 @@ function appendCard(){
                 let image = value.img
                 let futureImage = document.createElement('img')
                 futureImage.setAttribute('src', `/tarot-json/cards/${image}`)
+                futureImage.setAttribute('height', '300px')
                 futureCardImage.appendChild(futureImage)
             }
         }
@@ -511,5 +515,3 @@ function appendFortune() {
     ${fortuneCalled.fortune}`
     doseOfReality.innerText = `${fortuneCalled.dose}`
 }
-
-
