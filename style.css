@@ -17,7 +17,7 @@ html {
     display: grid;
     grid-template-columns: 1fr 1fr 5fr 1fr 1fr;
     grid-template-rows: 2fr auto auto;
-    background-image: linear-gradient(to bottom, #616161, #766576, #99657b, #ba656a, #cb6f4b, #cd8246, #cb9645, #c5aa4b, #cdbd71, #d6d096, #e2e2bc, #f1f3e1);
+    background: radial-gradient(#000000, #291751, #0a0543);
     background-size: cover;
     font-family: 'Big Shoulders Stencil Display', cursive;
    }

@@ -347,24 +347,20 @@ const advice = document.getElementById('advice')
 
 const body = document.querySelector('body')
 
-// const mainDeck = document.getElementById('main-deck')
-// mainDeck.addEventListener('mouseover', function (e) {
-//   audio.play()
-// })
-
-// const audio = new Audio('/OKECO47483.mp3')
-
+const cardSound = new Audio('240776_f4ngy_card-flip (online-audio-converter.com).mp3')
+const fortuneSound = new Audio('37170_volivieri_candy-wrapper-crinkle-e (online-audio-converter.com).mp3')
+const shuffleDeckSound = new Audio('201253_empraetorius_card-shuffle (online-audio-converter.com).mp3')
 
 /*----------------------------- Event Listeners -----------------------------*/
 
 body.addEventListener('click', masterFunction)
 
 
-
 /*-------------------------------- Functions --------------------------------*/
 function masterFunction(e){
   let identifier = e.target.id
   if(identifier === 'reset-deck'){
+    shuffleDeckSound.play()
     initDeck()
   }
   else if(identifier === 'unhappy-customer'){
@@ -379,26 +375,26 @@ function masterFunction(e){
 }
 
 function initDeck(){
-    pastCardImage.innerHTML = ''
-    pastCardTitle.innerText = ''
-    pastCardMeaning.innerText = ''
-    presentCardImage.innerHTML = ''
-    presentCardTitle.innerText = ''
-    presentCardMeaning.innerText = ''
-    futureCardImage.innerHTML = ''
-    futureCardTitle.innerText = ''
-    futureCardMeaning.innerText = ''
-    questionCardImage.innerHTML = ''
-    questionCardTitle.innerText = ''
-    questionCardMeaning.innerText = ''
-    questionInput.value = ''
-    fortuneCookie.innerText = ''
-    doseOfReality.innerText = ''
-    presentCard.style.visibility = 'hidden'
-    pastCard.style.visibility = 'hidden'
-    futureCard.style.visibility = 'hidden'
-    questionCard.style.visibility = 'hidden'
-    advice.style.visibility = 'hidden'
+  pastCardImage.innerHTML = ''
+  pastCardTitle.innerText = ''
+  pastCardMeaning.innerText = ''
+  presentCardImage.innerHTML = ''
+  presentCardTitle.innerText = ''
+  presentCardMeaning.innerText = ''
+  futureCardImage.innerHTML = ''
+  futureCardTitle.innerText = ''
+  futureCardMeaning.innerText = ''
+  questionCardImage.innerHTML = ''
+  questionCardTitle.innerText = ''
+  questionCardMeaning.innerText = ''
+  questionInput.value = ''
+  fortuneCookie.innerText = ''
+  doseOfReality.innerText = ''
+  presentCard.style.visibility = 'hidden'
+  pastCard.style.visibility = 'hidden'
+  futureCard.style.visibility = 'hidden'
+  questionCard.style.visibility = 'hidden'
+  advice.style.visibility = 'hidden'
 }
 
 function grabACard(){
@@ -447,6 +443,7 @@ function releaseTheFortune(){
 }
 
 function appendCard(){
+  cardSound.play()
     if(pastCardMeaning.innerText === '' && pastCardTitle.innerText === ''){
         pastCardMeaning.innerText = `${cardCalled.meaning}`
         pastCardTitle.innerText = `${cardCalled.name}`
@@ -495,6 +492,7 @@ function appendCard(){
 }
 
 function appendAnswer() {
+  cardSound.play()
     if(questionCardImage.innerHTML === ''){
         let iterator = cards.values()
         for(let value of iterator){
@@ -513,6 +511,7 @@ function appendAnswer() {
 }
 
 function appendFortune() {
+  fortuneSound.play()
     fortuneCookie.innerText = `Have A Fortune Cookie:  
     ${fortuneCalled.fortune}`
     doseOfReality.innerText = `${fortuneCalled.dose}`
