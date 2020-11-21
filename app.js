@@ -344,6 +344,7 @@ const questionCardMeaning = document.getElementById('card-meaning')
 const fortuneCookie = document.getElementById('fortune-cookie')
 const doseOfReality = document.getElementById('dose-of-reality')
 const advice = document.getElementById('advice')
+const pppGrid = document.getElementById('ppp-grid')
 
 const body = document.querySelector('body')
 
