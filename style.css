@@ -32,6 +32,7 @@ html {
 
 #main-deck{
     border-radius: 4%;
+    box-shadow: 6px 6px 3px rgba(0, 0, 0, 0.2);
 }
 #ppp-grid{
     display: grid;
@@ -53,6 +54,8 @@ html {
 }
 .card img{
     border-radius: 4%;
+    box-shadow: 6px 6px 3px rgba(0, 0, 0, 0.2);
+    transform: rotate(-12deg);
 }
 #button-grid{
     display: grid;

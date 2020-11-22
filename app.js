@@ -344,7 +344,6 @@ const questionCardMeaning = document.getElementById('card-meaning')
 const fortuneCookie = document.getElementById('fortune-cookie')
 const doseOfReality = document.getElementById('dose-of-reality')
 const advice = document.getElementById('advice')
-const pppGrid = document.getElementById('ppp-grid')
 
 const body = document.querySelector('body')
 
@@ -362,6 +361,8 @@ function masterFunction(e){
   let identifier = e.target.id
   if(identifier === 'reset-deck'){
     shuffleDeckSound.play()
+    // document.getElementById('main-deck').style.transform = 'rotate(12deg)'
+    // document.getElementById('main-deck').style.transform = 'rotate(-12deg)'
     initDeck()
   }
   else if(identifier === 'unhappy-customer'){
@@ -369,6 +370,9 @@ function masterFunction(e){
   }
   else if(identifier === 'main-deck'){
     grabACard()
+    if(questionCard.style.visibility === 'visible'){
+      initDeck()
+    }
   }
   else if(identifier === 'ask-the-deck'){
     oneCardAnswer()
