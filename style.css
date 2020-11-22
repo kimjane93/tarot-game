@@ -36,6 +36,37 @@ html {
     grid-column: 2 / 5;
     grid-row: 1 / 2;
 }
+h1{
+    background-color: rgba(0, 0, 0, 0.442);
+    color: white;
+    border-radius: 20%;
+    font-size: 3rem;
+}
+h2{
+    background-color: rgba(0, 0, 0, 0.442);
+    color: white;
+    border-radius: 20%;
+    font-size: 2.5rem;
+}
+#cardfan{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-template-rows: auto;
+}
+#cardfan img{
+    border-radius: 4%;
+    box-shadow: 6px 6px 3px rgba(0, 0, 0, 0.2);
+    grid-row: 1 / 2;
+    grid-column: 3 / 4;
+    transform-origin: center 600px;
+    transition: all .4s linear;
+}
+#cardfan:hover img:first-child{
+    transform: rotate(-12deg)
+}
+#cardfan:hover img:last-child{
+    transform: rotate(12deg);
+}
 #ppp-grid{
     grid-column: 2 / 5;
     grid-row: 2 / 3;
@@ -70,32 +101,6 @@ html {
     grid-template-rows: auto auto auto;
     margin-bottom: 10%;
 }
-#unhappy-customer{
-    grid-row: 2 / 3;
-    grid-column: 1 /4;
-}
-#question-card{
-    grid-column: 2 / 5;
-    grid-row: 2 / 3;
-}
-#question{
-    grid-row: 1 / 2;
-    grid-column: 1 / 3;
-    border: rgba(210, 180, 140, 0.442) inset;
-    font-size: 2rem;
-    font-family: 'Shadows Into Light', cursive;
-}
-#ask-the-deck{
-    grid-row: 1 / 2;
-    grid-column: 3 / 4;
-}
-input:hover{
-    transform: scale(1.2)
-}
-#reset-deck{
-    grid-row: 3 / 4;
-    grid-column: 2 / 3;
-}
 button{
     border: rgba(210, 180, 140, 0.442) inset;
     background-color: rgba(0, 0, 0, 0.442);
@@ -108,22 +113,42 @@ button:hover{
     color: white;
     transform: scale(1.2)
 }
-
+#question{
+    grid-row: 1 / 2;
+    grid-column: 1 / 3;
+    border: rgba(210, 180, 140, 0.442) inset;
+    font-size: 2rem;
+    font-family: 'Shadows Into Light', cursive;
+}
+#question:hover{
+    transform: scale(1.2)
+}
+#ask-the-deck{
+    grid-row: 1 / 2;
+    grid-column: 3 / 4;
+}
+#question-card{
+    grid-column: 2 / 5;
+    grid-row: 2 / 3;
+}
+#reset-deck{
+    grid-row: 3 / 4;
+    grid-column: 2 / 3;
+}
 #question-card{
     border: none;
     visibility: hidden;
     text-align: center;
 }
+#unhappy-customer{
+    grid-row: 2 / 3;
+    grid-column: 1 /4;
+}
 #advice{
     font-size: 3rem;
     text-align: center;
-    background-color: rgba(0, 0, 0, 0.442);
     color: white;
     border-radius: 20%;
-}
-#advice:hover{
-    background-color: rgba(0, 0, 0, .9);
-    color: white
 }
 .background-color{
     background-color: rgba(0, 0, 0, 0.442);
@@ -133,52 +158,7 @@ button:hover{
 .background-color:hover{
     background-color: rgba(0, 0, 0, .9);
     color: white;
-    transform: scale(1.2)
-}
-h1{
-    background-color: rgba(0, 0, 0, 0.442);
-    color: white;
-    border-radius: 20%;
-    font-size: 3rem;
-}
-h2{
-    background-color: rgba(0, 0, 0, 0.442);
-    color: white;
-    border-radius: 20%;
-    font-size: 2.5rem;
-
-}
-h1:hover{
-    background-color: rgba(0, 0, 0, .9);
-    color: white;
-    transform: scale(1.2)
-}
-h2:hover{
-    background-color: rgba(0, 0, 0, .9);
-    color: white;
-    transform: scale(1.2)
-}
-.card-title{
-    font-size: 2rem;
-}
-#cardfan{
-    display: grid;
-    grid-template-columns: auto auto auto auto;
-    grid-template-rows: auto;
-}
-#cardfan img{
-    border-radius: 4%;
-    box-shadow: 6px 6px 3px rgba(0, 0, 0, 0.2);
-    grid-row: 1 / 2;
-    grid-column: 3 / 4;
-    transform-origin: center 600px;
-    transition: all .4s linear;
-}
-#cardfan:hover img:first-child{
-    transform: rotate(-12deg)
-}
-#cardfan:hover img:last-child{
-    transform: rotate(12deg);
+    transform: scale(1.2);
 }
 @media only screen and (max-width: 768px){
     #ppp-grid{
