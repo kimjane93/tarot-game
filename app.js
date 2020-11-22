@@ -368,7 +368,7 @@ function masterFunction(e){
   }
   else if(identifier === 'main-deck'){
     grabACard()
-    if(questionCard.style.visibility === 'visible'){
+    if(questionCard.style.visibility === 'visible' || advice.style.visibility === 'visible'){
       initDeck()
     }
   }
