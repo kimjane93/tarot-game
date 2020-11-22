@@ -361,8 +361,6 @@ function masterFunction(e){
   let identifier = e.target.id
   if(identifier === 'reset-deck'){
     shuffleDeckSound.play()
-    // document.getElementById('main-deck').style.transform = 'rotate(12deg)'
-    // document.getElementById('main-deck').style.transform = 'rotate(-12deg)'
     initDeck()
   }
   else if(identifier === 'unhappy-customer'){
@@ -418,6 +416,7 @@ function grabACard(){
     }
 
 function oneCardAnswer() {
+  if(questionInput.value !== ''){
     initDeck()
     fetch('https://rws-cards-api.herokuapp.com/api/v1/cards/random?n=1')
     .then(function (response) {
@@ -431,6 +430,7 @@ function oneCardAnswer() {
     })
       .catch(function (error) {
       })
+    }
     }
 
 function releaseTheFortune(){
