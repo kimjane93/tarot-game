@@ -32,6 +32,16 @@ html {
     grid-template-columns: 1fr 1fr 5fr 1fr 1fr;
     grid-template-rows: auto auto auto;
 }
+.background-color{
+    background-color: rgba(0, 0, 0, 0.442);
+    color: white;
+    border-radius: 20%;
+}
+.background-color:hover{
+    background-color: rgba(0, 0, 0, .9);
+    color: white;
+    transform: scale(1.2);
+}
 #intro-plus-deck{
     grid-column: 2 / 5;
     grid-row: 1 / 2;
@@ -131,10 +141,6 @@ button:hover{
     grid-column: 2 / 5;
     grid-row: 2 / 3;
 }
-#reset-deck{
-    grid-row: 3 / 4;
-    grid-column: 2 / 3;
-}
 #question-card{
     border: none;
     visibility: hidden;
@@ -150,15 +156,9 @@ button:hover{
     color: white;
     border-radius: 20%;
 }
-.background-color{
-    background-color: rgba(0, 0, 0, 0.442);
-    color: white;
-    border-radius: 20%;
-}
-.background-color:hover{
-    background-color: rgba(0, 0, 0, .9);
-    color: white;
-    transform: scale(1.2);
+#reset-deck{
+    grid-row: 3 / 4;
+    grid-column: 2 / 3;
 }
 @media only screen and (max-width: 768px){
     #ppp-grid{

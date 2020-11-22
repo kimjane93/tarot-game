@@ -319,6 +319,7 @@ let cards = [
   ]
 
 /*------------------------ Cached Element References ------------------------*/
+const body = document.querySelector('body')
 
 const pastCard = document.getElementById('past')
 const pastCardImage = document.getElementById('past-image')
@@ -345,11 +346,9 @@ const fortuneCookie = document.getElementById('fortune-cookie')
 const doseOfReality = document.getElementById('dose-of-reality')
 const advice = document.getElementById('advice')
 
-const body = document.querySelector('body')
-
-const cardSound = new Audio('240776_f4ngy_card-flip (online-audio-converter.com).mp3')
-const fortuneSound = new Audio('37170_volivieri_candy-wrapper-crinkle-e (online-audio-converter.com).mp3')
-const shuffleDeckSound = new Audio('201253_empraetorius_card-shuffle (online-audio-converter.com).mp3')
+const cardSound = new Audio('soundEffects/240776_f4ngy_card-flip (online-audio-converter.com).mp3')
+const fortuneSound = new Audio('soundEffects/37170_volivieri_candy-wrapper-crinkle-e (online-audio-converter.com).mp3')
+const shuffleDeckSound = new Audio('soundEffects/201253_empraetorius_card-shuffle (online-audio-converter.com).mp3')
 
 /*----------------------------- Event Listeners -----------------------------*/
 
