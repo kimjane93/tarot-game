@@ -18,7 +18,10 @@
 * HTML
 * CSS
 * APIs: [Tarot Text Api](https://rws-cards-api.herokuapp.com/api/v1/cards/random?n=1) & [Fortune Cookie API](https://api.adviceslip.com/advice)
-* Cloned Github Repository: [Tarot Card Images]((https://github.com/equokka/tarot-json))
+* Cloned Github Repository: [Tarot Card Images](https://github.com/equokka/tarot-json)
+* Google Fonts
+* Freesound.org
+* Postman
 
 ## Next Steps:
 * Add in a shuffle deck animation on the main deck when reset button is clicked
