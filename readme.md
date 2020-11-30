@@ -1,4 +1,8 @@
 # Virtual Tarot Reading
+## Getting Started: 
+* [Get a virtual reading](http://tarot-game.surge.sh/) on your past, present, future, and specific questions with this tarot reading card game!
+* The APIs are sometimes a little slow to respond, so if you click for a card and nothing appears, refresh the page and wait a few seconds before trying again!
+* 
 [Wireframe of Tarot Main Page](https://whimsical.com/tarot-LVEyEG58EggpCTPTT9a1Uv)
 ![Wireframe](https://i.imgur.com/EP1Br3V.png)
 [Wireframe Tarot Game Flow](https://whimsical.com/tarot-LVEyEG58EggpCTPTT9a1Uv)
@@ -8,10 +12,6 @@
 ![Screenshots of Tarot Game](https://i.imgur.com/mujh7r5.png)
 ![Screenshots of Tarot Game](https://i.imgur.com/z06jfZK.png)
 ![Screenshots of Tarot Game](https://i.imgur.com/XWMqm5L.png)
-
-## Getting Started: 
-* [Get a virtual reading](http://tarot-game.surge.sh/) on your past, present, future, and specific questions with this tarot reading card game!
-* The APIs are sometimes a little slow to respond, so if you click for a card and nothing appears, refresh the page and wait a few seconds before trying again!
 
 ## List of Technologies Used:
 * Javascript
