@@ -19,8 +19,8 @@ html {
     grid-template-rows: 2fr auto auto;
     background: radial-gradient(ellipse at top,hsla(235, 61%, 24%, 0.374), hsl(277, 60%, 20%), transparent),
     radial-gradient(ellipse at bottom,hsla(235, 44%, 38%, 0.298), hsla(222, 59%, 19%, 0.853), transparent);
-    background-size: 100% 100%;
-    min-height: 100vh;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     font-family: 'Shadows Into Light', cursive;
    }
 #deck-shell{
